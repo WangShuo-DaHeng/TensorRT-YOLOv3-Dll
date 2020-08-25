@@ -25,7 +25,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -38,7 +38,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -75,20 +75,52 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>detector</TargetName>
+    <ExecutablePath>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\bin;C:\Program Files\TensorRT-7.1.3.4\bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>C:\Program Files\TensorRT-7.1.3.4\include;D:\OpenCV\opencv\build\include\opencv2;D:\OpenCV\opencv\build\include;..\extra;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\outputs\$(PlatformTarget)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\bin;C:\Program Files\TensorRT-7.1.3.4\bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>C:\Program Files\TensorRT-7.1.3.4\include;D:\OpenCV\opencv\build\include\opencv2;D:\OpenCV\opencv\build\include;..\extra;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\outputs\$(PlatformTarget)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExecutablePath>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\bin;C:\Program Files\TensorRT-7.1.3.4\bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>C:\Program Files\TensorRT-7.1.3.4\include;D:\OpenCV\opencv\build\include\opencv2;D:\OpenCV\opencv\build\include;..\extra;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\outputs\$(PlatformTarget)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\25785\Desktop\yolov3\yolo-tensorrt\extra;C:\Program Files\TensorRT-7.1.3.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>myelin64_1.lib;nvinfer.lib;nvinfer_plugin.lib;nvonnxparser.lib;nvparsers.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Bscmake>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\25785\Desktop\yolov3\yolo-tensorrt\extra;C:\Program Files\TensorRT-7.1.3.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>myelin64_1.lib;nvinfer.lib;nvinfer_plugin.lib;nvonnxparser.lib;nvparsers.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Bscmake>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -111,10 +143,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\25785\Desktop\yolov3\yolo-tensorrt\extra;C:\Program Files\TensorRT-7.1.3.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Program Files\TensorRT-7.1.3.4\lib;D:\OpenCV\opencv\build\x64\vc15\lib;$(CudaToolkitLibDir)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>myelin64_1.lib;cudart_static.lib;nvinfer.lib;nvinfer_plugin.lib;nvonnxparser.lib;nvparsers.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;cudart.lib;cudadevrt.lib</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>

@@ -28,13 +28,19 @@ SOFTWARE.
 #define __TRT_UTILS_H__
 
 /* OpenCV headers */
+#ifdef _DEBUG  
+#pragma comment(lib,"opencv_world411d.lib") 
+#else
+#pragma comment(lib,"opencv_world411.lib") 
+#endif
 //#include <opencv/cv.h>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-
+#include <map>
+#include <vector>
 #include "mish.h"
 #include "chunk.h"
 #include <set>

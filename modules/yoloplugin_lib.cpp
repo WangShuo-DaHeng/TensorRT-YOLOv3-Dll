@@ -22,7 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *
 */
-
+#pragma warning(disable:4996)
+#pragma warning(disable:4700)
 #include "yoloplugin_lib.h"
 #include "yolo_config_parser.h"
 #include "yolov2.h"
@@ -98,8 +99,8 @@ YoloPluginCtx* YoloPluginCtxInit(YoloPluginInitParams* initParams, size_t batchS
     char** gArgV = new char*[2];
     gArgV[0] = new char[64];
     gArgV[1] = new char[512];
-    strcpy(gArgV[0], "yolo_plugin_ctx");
-    strcpy(gArgV[1], std::string("--flagfile=" + initParams->configFilePath).c_str());
+	strcpy(gArgV[0], "yolo_plugin_ctx");
+	strcpy(gArgV[1], std::string("--flagfile=" + initParams->configFilePath).c_str());
 //    yoloConfigParserInit(2, gArgV);
 
     YoloPluginCtx* ctx = new YoloPluginCtx;
