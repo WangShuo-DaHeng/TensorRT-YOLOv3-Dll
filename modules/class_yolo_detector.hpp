@@ -16,6 +16,13 @@
 #include <stdio.h>  /* defines FILENAME_MAX */
 
 #include "class_detector.h"
+
+/* OpenCV headers */
+#ifdef _DEBUG  
+#pragma comment(lib,"opencv_world411d.lib") 
+#else
+#pragma comment(lib,"opencv_world411.lib") 
+#endif
 //struct Result
 //{
 //	int		 id = -1;
